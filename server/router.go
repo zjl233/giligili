@@ -46,10 +46,7 @@ func NewRouter() *gin.Engine {
 
 		// 评论操作
 		v1.POST("comments", api.CreateComment)
-		//v1.GET("comment/:id", api.ShowComment)
-		//v1.GET("comments", api.ListComment)
-		//v1.PUT("comment/:id", api.UpdateComment)
-		//v1.DELETE("comment/:id", api.DeleteComment)
+		v1.GET("comments", api.ListComment)
 
 		// 排行榜
 		v1.GET("rank/daily", api.DailyRank)
