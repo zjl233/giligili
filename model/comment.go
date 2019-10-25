@@ -7,6 +7,6 @@ import (
 // Comment 评论模型
 type Comment struct {
 	gorm.Model
-	VideoId uint
+	VideoID string
 	Info    string
 }
