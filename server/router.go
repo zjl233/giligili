@@ -43,6 +43,14 @@ func NewRouter() *gin.Engine {
 		v1.GET("videos", api.ListVideo)
 		v1.PUT("video/:id", api.UpdateVideo)
 		v1.DELETE("video/:id", api.DeleteVideo)
+
+		// 评论操作
+		v1.POST("comments", api.CreateComment)
+		//v1.GET("comment/:id", api.ShowComment)
+		//v1.GET("comments", api.ListComment)
+		//v1.PUT("comment/:id", api.UpdateComment)
+		//v1.DELETE("comment/:id", api.DeleteComment)
+
 		// 排行榜
 		v1.GET("rank/daily", api.DailyRank)
 		// 其他
