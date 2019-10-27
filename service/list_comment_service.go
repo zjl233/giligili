@@ -14,8 +14,8 @@ type ListCommentService struct {
 func (service *ListCommentService) List() serializer.Response {
 	var comments []model.Comment
 	total := 0
-
-	if err := model.DB.Where("video_id = ?", service.VideoID).Find(&comments).Count(&total).Error; err != nil {
+	// list only top level comments
+	if err := model.DB.Where("video_id = ? and parent_id is null", service.VideoID).Find(&comments).Count(&total).Error; err != nil {
 		return serializer.Response{
 			Status: 50000,
 			Msg:    "数据库连接错误",
