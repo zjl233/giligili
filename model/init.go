@@ -1,6 +1,7 @@
 package model
 
 import (
+	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -35,4 +36,22 @@ func Database(connString string) {
 	DB = db
 
 	migration()
+}
+
+// OSS bucket 单例
+var BKT *oss.Bucket
+
+func OSS(endpoint, accessKeyID, accessKeySecret, bucketName string) {
+	client, err := oss.New(endpoint, accessKeyID, accessKeySecret)
+	if err != nil {
+		panic(err)
+	}
+
+	// 获取存储空间。
+	bucket, err := client.Bucket(bucketName)
+	if err != nil {
+		panic(err)
+	}
+
+	BKT = bucket
 }

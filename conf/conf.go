@@ -21,6 +21,7 @@ func Init() {
 
 	// 连接数据库
 	model.Database(os.Getenv("MYSQL_DSN"))
+	model.OSS(os.Getenv("OSS_END_POINT"), os.Getenv("OSS_ACCESS_KEY_ID"), os.Getenv("OSS_ACCESS_KEY_SECRET"), os.Getenv("OSS_BUCKET"))
 	cache.Redis()
 
 	// 启动定时任务

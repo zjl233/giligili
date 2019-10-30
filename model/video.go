@@ -2,10 +2,8 @@ package model
 
 import (
 	"giligili/cache"
-	"os"
 	"strconv"
 
-	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/jinzhu/gorm"
 )
 
@@ -20,18 +18,12 @@ type Video struct {
 
 // AvatarURL 封面地址
 func (video *Video) AvatarURL() string {
-	client, _ := oss.New(os.Getenv("OSS_END_POINT"), os.Getenv("OSS_ACCESS_KEY_ID"), os.Getenv("OSS_ACCESS_KEY_SECRET"))
-	bucket, _ := client.Bucket(os.Getenv("OSS_BUCKET"))
-	signedGetURL, _ := bucket.SignURL(video.Avatar, oss.HTTPGet, 600)
-	return signedGetURL
+	return SignedGetURL(video.Avatar)
 }
 
 // VideoURL 视频地址
 func (video *Video) VideoURL() string {
-	client, _ := oss.New(os.Getenv("OSS_END_POINT"), os.Getenv("OSS_ACCESS_KEY_ID"), os.Getenv("OSS_ACCESS_KEY_SECRET"))
-	bucket, _ := client.Bucket(os.Getenv("OSS_BUCKET"))
-	signedGetURL, _ := bucket.SignURL(video.URL, oss.HTTPGet, 600)
-	return signedGetURL
+	return SignedGetURL(video.URL)
 }
 
 // View 点击数
