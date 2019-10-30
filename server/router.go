@@ -50,8 +50,10 @@ func NewRouter() *gin.Engine {
 
 		// 排行榜
 		v1.GET("rank/daily", api.DailyRank)
-		// 其他
-		v1.POST("upload/token", api.UploadToken)
+		// 获得阿里云 oss 的文件上传的 url， 以及文件查看的 url
+		v1.POST("upload/avatar", api.UploadAvatar)
+		// 获得阿里云 oss 的视频上传的 url
+		v1.POST("upload/video", api.UploadVideo)
 	}
 
 	// swagger文档
