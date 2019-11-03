@@ -10,9 +10,9 @@ import (
 
 // UserRegister 用户注册接口
 func UserRegister(c *gin.Context) {
-	var service service.UserRegisterService
-	if err := c.ShouldBind(&service); err == nil {
-		if user, err := service.Register(); err != nil {
+	var serv service.UserRegisterService
+	if err := c.ShouldBind(&serv); err == nil {
+		if user, err := serv.Register(); err != nil {
 			c.JSON(200, err)
 		} else {
 			res := serializer.BuildUserResponse(user)
@@ -25,9 +25,9 @@ func UserRegister(c *gin.Context) {
 
 // UserLogin 用户登录接口
 func UserLogin(c *gin.Context) {
-	var service service.UserLoginService
-	if err := c.ShouldBind(&service); err == nil {
-		if user, err := service.Login(); err != nil {
+	var serv service.UserLoginService
+	if err := c.ShouldBind(&serv); err == nil {
+		if user, err := serv.Login(); err != nil {
 			c.JSON(200, err)
 		} else {
 			// 设置Session
