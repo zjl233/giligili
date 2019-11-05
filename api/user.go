@@ -61,3 +61,9 @@ func UserLogout(c *gin.Context) {
 		Msg:    "登出成功",
 	})
 }
+
+func UserShow(c *gin.Context) {
+	serv := service.UserShowService{}
+	res := serv.Show(c.Param("user_name"))
+	c.JSON(200, res)
+}

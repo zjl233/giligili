@@ -22,19 +22,18 @@ func NewRouter() *gin.Engine {
 	{
 		v1.POST("ping", api.Ping)
 
-		// 用户注册
-		v1.POST("user/register", api.UserRegister)
-
-		// 用户登录
-		v1.POST("user/login", api.UserLogin)
+		// 用户相关
+		v1.POST("login", api.UserLogin)
+		v1.POST("register", api.UserRegister)
+		v1.GET("users/:user_name", api.UserShow)
 
 		// 需要登录保护的
 		authed := v1.Group("/")
 		authed.Use(middleware.AuthRequired())
 		{
 			// User Routing
-			authed.GET("user/me", api.UserMe)
-			authed.DELETE("user/logout", api.UserLogout)
+			//authed.GET("user/me", api.UserMe)
+			authed.DELETE("logout", api.UserLogout)
 		}
 
 		// 视频操作
