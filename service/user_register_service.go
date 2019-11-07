@@ -11,6 +11,7 @@ type UserRegisterService struct {
 	UserName        string `form:"user_name" json:"user_name" binding:"required,min=5,max=30"`
 	Password        string `form:"password" json:"password" binding:"required,min=8,max=40"`
 	PasswordConfirm string `form:"password_confirm" json:"password_confirm" binding:"required,min=8,max=40"`
+	Avatar          string `form:"avatar" json:"avatar"`
 }
 
 // Valid 验证表单
@@ -49,6 +50,7 @@ func (service *UserRegisterService) Register() (model.User, *serializer.Response
 		Nickname: service.Nickname,
 		UserName: service.UserName,
 		Status:   model.Active,
+		Avatar:   service.Avatar,
 	}
 
 	// 表单验证
