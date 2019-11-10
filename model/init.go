@@ -38,9 +38,10 @@ func Database(connString string) {
 	migration()
 }
 
-// OSS bucket 单例
+// BKT OSS bucket 单例
 var BKT *oss.Bucket
 
+// OSS 初始化阿里对象存储
 func OSS(endpoint, accessKeyID, accessKeySecret, bucketName string) {
 	client, err := oss.New(endpoint, accessKeyID, accessKeySecret)
 	if err != nil {

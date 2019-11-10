@@ -29,8 +29,7 @@ func (video *Video) VideoURL() string {
 
 // View 点击数
 func (video *Video) View() uint64 {
-	countStr, _ := cache.RedisClient.Get(cache.VideoViewKey(video.ID)).Result()
-	count, _ := strconv.ParseUint(countStr, 10, 64)
+	count, _ := cache.RedisClient.Get(cache.VideoViewKey(video.ID)).Uint64()
 	return count
 }
 

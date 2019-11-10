@@ -16,3 +16,7 @@ const (
 func VideoViewKey(id uint) string {
 	return fmt.Sprintf("view:video:%s", strconv.Itoa(int(id)))
 }
+
+func VideoLikedKey(id string) string {
+	return fmt.Sprintf("video:%s:liked", id)
+}

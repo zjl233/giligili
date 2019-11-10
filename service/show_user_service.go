@@ -5,12 +5,12 @@ import (
 	"giligili/serializer"
 )
 
-// UserShowService 用户资料的服务
-type UserShowService struct {
+// ShowUserService 用户资料的服务
+type ShowUserService struct {
 }
 
 // Show 用户
-func (service *UserShowService) Show(userName string) serializer.Response {
+func (service *ShowUserService) Show(userName string) serializer.Response {
 	var user model.User
 	err := model.DB.Where("user_name = ?", userName).First(&user).Error
 	if err != nil {

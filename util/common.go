@@ -2,6 +2,7 @@ package util
 
 import (
 	"math/rand"
+	"strconv"
 	"time"
 )
 
@@ -15,4 +16,14 @@ func RandStringRunes(n int) string {
 		b[i] = letterRunes[rand.Intn(len(letterRunes))]
 	}
 	return string(b)
+}
+
+// UintToStr convert uint to string
+func UintToStr(n uint) string {
+	return strconv.FormatUint(uint64(n), 10)
+}
+
+func StrToUint(s string) uint64 {
+	n, _ := strconv.ParseUint(s, 10, 64)
+	return n
 }

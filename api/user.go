@@ -62,8 +62,8 @@ func UserLogout(c *gin.Context) {
 	})
 }
 
-func UserShow(c *gin.Context) {
-	serv := service.UserShowService{}
+func ShowUser(c *gin.Context) {
+	serv := service.ShowUserService{}
 	res := serv.Show(c.Param("user_name"))
 	c.JSON(200, res)
 }

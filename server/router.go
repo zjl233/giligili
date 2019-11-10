@@ -25,7 +25,7 @@ func NewRouter() *gin.Engine {
 		// 用户相关
 		v1.POST("login", api.UserLogin)
 		v1.POST("register", api.UserRegister)
-		v1.GET("users/:user_name", api.UserShow)
+		v1.GET("users/:user_name", api.ShowUser)
 
 		// 需要登录保护的
 		authed := v1.Group("/")
@@ -53,6 +53,9 @@ func NewRouter() *gin.Engine {
 		v1.POST("upload/avatar", api.UploadAvatar)
 		// 获得阿里云 oss 的视频上传的 url
 		v1.POST("upload/video", api.UploadVideo)
+
+		// like 操作
+		v1.POST("like/video", api.LikeVideo)
 	}
 
 	// swagger文档
