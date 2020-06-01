@@ -47,6 +47,17 @@ func NewRouter() *gin.Engine {
 		v1.POST("comments", api.CreateComment)
 		v1.GET("comments", api.ListComment)
 
+		// 相册操作
+		v1.POST("albums", api.CreateAlbum)
+		v1.GET("album/:id", api.ShowAlbum)
+		v1.GET("albums", api.ListAlbum)
+		v1.GET("albums/search", api.SearchAlbum)
+
+		// 照片操作
+		v1.GET("photos", api.ListPhoto)
+		v1.DELETE("photo/:id", api.DeletePhoto)
+		v1.GET("photos/search", api.SearchPhoto)
+
 		// 排行榜
 		v1.GET("rank/daily", api.DailyRank)
 		// 获得阿里云 oss 的文件上传的 url， 以及文件查看的 url

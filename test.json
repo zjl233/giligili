@@ -1,0 +1,10 @@
+{
+  "title": "第一个向册",
+  "category": "test",
+  "visibility": "public",
+  "photos": [
+    "avatar/invalid",
+    "avatar/invalid2"
+  ],
+  "password": "12345678"
+}

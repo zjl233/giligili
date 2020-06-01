@@ -20,7 +20,7 @@ func SignedPutURL(path string, options []oss.Option) (signedPutURL string) {
 func SignedGetURL(path string) (signedGetURL string) {
 	signedGetURL, err := BKT.SignURL(path, oss.HTTPGet, 600)
 	if err != nil {
-		// todo 更具体的错误处理，比如文件不存在
+		// todo 更具体的错误处理
 		panic(err)
 	}
 	return
