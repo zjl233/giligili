@@ -17,7 +17,7 @@ services:
       OSS_ACCESS_KEY_SECRET="xxxxx"
       OSS_BUCKET="xxxx"
     ports:
-      - 3002:3001
+      - 3001:3000
     depends_on:
       - redis
       - mysql
