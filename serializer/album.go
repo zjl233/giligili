@@ -9,6 +9,7 @@ import (
 type Album struct {
 	ID         uint    `json:"id"`
 	Title      string  `json:"title"`
+	Category   string  `json:"category"`
 	Visibility string  `json:"visibility"`
 	Photos     []Photo `json:"photos"`
 	CreatedAt  int64   `json:"created_at"`
@@ -21,6 +22,7 @@ func BuildAlbum(item model.Album) Album {
 	return Album{
 		ID:         item.ID,
 		Title:      item.Title,
+		Category:   item.Category,
 		Visibility: item.Visibility,
 		Photos:     BuildPhotosFromAlbumID(item.ID),
 		CreatedAt:  item.CreatedAt.Unix(),

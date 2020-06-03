@@ -47,6 +47,9 @@ func NewRouter() *gin.Engine {
 		v1.POST("comments", api.CreateComment)
 		v1.GET("comments", api.ListComment)
 
+		// 用户相册操作，获取当前用户创建的 albums
+		v1.GET("user/albums", api.ListUserAlbum)
+
 		// 相册操作
 		v1.POST("albums", api.CreateAlbum)
 		v1.GET("album/:id", api.ShowAlbum)

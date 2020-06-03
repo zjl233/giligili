@@ -35,6 +35,18 @@ func ListAlbum(c *gin.Context) {
 	}
 }
 
+// ListUserAlbum 视频列表接口
+func ListUserAlbum(c *gin.Context) {
+	serv := service.ListUserAlbumService{}
+	if err := c.ShouldBind(&serv); err == nil {
+		res := serv.List(CurrentUser(c))
+		c.JSON(200, res)
+	} else {
+		c.JSON(200, ErrorResponse(err))
+	}
+}
+
+
 // SearchAlbum 更新视频的接口
 func SearchAlbum(c *gin.Context) {
 	serv := service.SearchAlbumService{}
