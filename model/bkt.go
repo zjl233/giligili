@@ -8,7 +8,7 @@ import (
 
 // SignedPutURL path 是将要创建的文件在bucket中的具体位置
 func SignedPutURL(path string, options []oss.Option) (signedPutURL string) {
-	signedPutURL, err := BKT.SignURL(path, oss.HTTPPut, 600, options...)
+	signedPutURL, err := BKT.SignURL(path, oss.HTTPPut, 60000, options...)
 	if err != nil {
 		// todo 更具体的错误处理
 		panic(err)
@@ -18,7 +18,7 @@ func SignedPutURL(path string, options []oss.Option) (signedPutURL string) {
 
 // SignedGetURL path 是你想要读取的文件在bucket中的具体位置
 func SignedGetURL(path string) (signedGetURL string) {
-	signedGetURL, err := BKT.SignURL(path, oss.HTTPGet, 600)
+	signedGetURL, err := BKT.SignURL(path, oss.HTTPGet, 60000)
 	if err != nil {
 		// todo 更具体的错误处理
 		panic(err)

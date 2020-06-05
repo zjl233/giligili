@@ -11,6 +11,7 @@ type Album struct {
 	Title      string  `json:"title"`
 	Category   string  `json:"category"`
 	Visibility string  `json:"visibility"`
+	Password   string  `json:"password"`
 	Photos     []Photo `json:"photos"`
 	CreatedAt  int64   `json:"created_at"`
 	User       User    `json:"user"`
@@ -24,6 +25,7 @@ func BuildAlbum(item model.Album) Album {
 		Title:      item.Title,
 		Category:   item.Category,
 		Visibility: item.Visibility,
+		Password:   item.PasswordHash,
 		Photos:     BuildPhotosFromAlbumID(item.ID),
 		CreatedAt:  item.CreatedAt.Unix(),
 		User:       BuildUser(user),

@@ -32,7 +32,7 @@ func NewRouter() *gin.Engine {
 		authed.Use(middleware.AuthRequired())
 		{
 			// User Routing
-			//authed.GET("user/me", api.UserMe)
+			authed.GET("user/me", api.UserMe)
 			authed.DELETE("logout", api.UserLogout)
 		}
 
